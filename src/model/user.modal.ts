@@ -45,6 +45,3 @@ const User = mongoose.models.User || mongoose.model<userInterface>("User", userS
 
 export default User;
 
-// yashchohtel_db_user
-// cjVJ0hhPTIwxWqDz
-// mongodb+srv://yashchohtel_db_user:cjVJ0hhPTIwxWqDz@cluster0.ain2bcs.mongodb.net/
