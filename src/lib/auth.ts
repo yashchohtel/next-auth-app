@@ -9,6 +9,7 @@ const authOptions: NextAuthOptions = {
     providers: [
 
         Credentials({
+
             name: "Credentials",
 
             credentials: {
@@ -23,6 +24,7 @@ const authOptions: NextAuthOptions = {
             },
 
             async authorize(credentials) {
+
                 // 1. Check credentials
                 if (!credentials?.email || !credentials?.password) {
                     return null;
@@ -78,3 +80,6 @@ const authOptions: NextAuthOptions = {
 }
 
 export default authOptions;
+
+
+
