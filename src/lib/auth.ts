@@ -6,8 +6,10 @@ import bcrypt from "bcryptjs";
 
 const authOptions: NextAuthOptions = {
 
+    // Configure one or more authentication providers
     providers: [
 
+        // login through credentials
         Credentials({
 
             name: "Credentials",
@@ -61,21 +63,51 @@ const authOptions: NextAuthOptions = {
                 };
             },
         }),
+
+        // login through google 
+        
+
     ],
 
+    // Add more NextAuth options here as needed
     callbacks: {
+
+        async jwt({ token, user }) {
+
+            if (user) {
+                token.id = user.id;
+                token.name = user.name;
+                token.email = user.email;
+                token.picture = user.image;
+            }
+
+            return token;
+        },
+
+        async session({ session, token }) {
+            if (session.user) {
+                session.user.id = token.id as string;
+                session.user.name = token.name;
+                session.user.email = token.email;
+                session.user.image = token.picture;
+            }
+
+            return session;
+        }
 
     },
 
     session: {
-
+        strategy: "jwt",
+        maxAge: 30 * 24 * 60 * 60,
     },
 
     pages: {
-
+        signIn: "/login",
+        error: "/login",
     },
 
-    secret: "kjdfhapoy"
+    secret: process.env.NEXTAUTH_SECRET,
 
 }
 
