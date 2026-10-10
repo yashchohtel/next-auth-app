@@ -65,7 +65,7 @@ const authOptions: NextAuthOptions = {
         }),
 
         // login through google 
-        
+
 
     ],
 
@@ -112,6 +112,16 @@ const authOptions: NextAuthOptions = {
 }
 
 export default authOptions;
+
+
+
+
+
+
+
+
+
+
 
 
 
